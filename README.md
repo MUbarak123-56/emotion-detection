@@ -1,1 +1,1 @@
-# animal-recognition
+# Animal Recognition Project
