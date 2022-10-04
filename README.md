@@ -1,1 +1,1 @@
-# Animal Recognition Project
+# Emotion Detection Project
