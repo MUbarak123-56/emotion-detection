@@ -7,7 +7,7 @@ import numpy as np
 #import skimage
 from pathlib import Path
 #from fastai.vision.widgets import *
-from fastai import *
+from fastai.vision.all import *
 import pathlib
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set(rc={'axes.facecolor':(0,0,0,0), 'figure.facecolor':(0,0,0,0)})
