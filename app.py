@@ -27,7 +27,7 @@ def run():
     st.markdown("<h1 style='text-align: center; color: white;'>Emotion Detective</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
     col1.write(' ')
-    col2.image(header_image)
+    col2.image(header_image, caption = "Photo Credit: https://techcrunch.com/2015/04/12/how-pixar-solves-problems-from-the-inside-out/")
     col2.write(' ')
     st.markdown("<h3 style='text-align: center; color: white;'>Welcome to Emotion Detective! An emotion detection website</h3>", unsafe_allow_html=True)
     initial_sentence = "People display emotions multiple times when going through different events in life. They display negative emotions whenever something upsets them (anger, sadness, fear). They can be very happy when an event goes in their favour (happiness). They can be quite shocked at seeing the unexpected (surprised). And finally, they can display a neutral outlook when everything seems calm (neutral)."
