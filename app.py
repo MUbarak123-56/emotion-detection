@@ -31,8 +31,8 @@ def add_bg_from_local(image_file):
     unsafe_allow_html=True
     )
 
-temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
+#temp = pathlib.PosixPath
+#pathlib.PosixPath = pathlib.WindowsPath
 model = load_learner("model-pkl/resnet-50.pkl")
 
 def run():
