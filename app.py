@@ -29,13 +29,13 @@ def run():
     col1.write(' ')
     col2.image(header_image)
     col2.write(' ')
-    st.subheader("Welcome to Emotion Detective! An emotion detection website")
+    st.markdown("<h3 style='text-align: center; color: white;'>Welcome to Emotion Detective! An emotion detection website</h3>", unsafe_allow_html=True)
     initial_sentence = "People display emotions multiple times when going through different events in life. They display negative emotions whenever something upsets them (anger, sadness, fear). They can be very happy when an event goes in their favour (happiness). They can be quite shocked at seeing the unexpected (surprised). And finally, they can display a neutral outlook when everything seems calm (neutral)."
     st.write(initial_sentence)
     objective_sentence = "The goal of this website will be to denote how someone feels by leveraging the power of Computer Vision to recognize and detect their emotional state. Some use cases of this app are interviewing, customer support and healthcare. Interviewers can utilize the website's ability to recognize interviewees' emotions and understand what their interviewees are going through during an interview. This will assist them with dealing with other interviewees in the future. Healthcare providers can also use this website's functionalities to know what a patient was feeling during a medical treatment, so they provide care for prospective patients without subjecting them to too much pain. Customer support representatives can use this website's ability to gain knowledge about how their customers feel so they can understand how to have better conversations with other customers in the future that will satisfy their customers' demands"
     st.write(objective_sentence)
     st.write("Use the button below to upload an image of someone's face so we can detect its emotion. Possible emotional states are: angry, happy, fearful, neutral, sad and surprised.")
-    st.markdown("<h5 style='text-align: center; color: red;'>Note: If you are using a phone to take a selfie, you might have to take it vertically for it to be processed</h5>", unsafe_allow_html=True)
+    st.markdown("<h6 style='text-align: center; color: red;'>Note: If you are using a phone to take a selfie, you might have to take it vertically for it to be processed</h6>", unsafe_allow_html=True)
     image_upload = st.file_uploader("Upload an image", type = ["png","jpg"])
     
     if image_upload is not None:
