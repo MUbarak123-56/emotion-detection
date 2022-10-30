@@ -25,6 +25,10 @@ def run():
     header_image = Image.open("inside_out.png")
     #st.sidebar.header("Emotion Detective")
     st.markdown("<h1 style='text-align: center; color: white; font-size: "10"'>Emotion Detective</h1>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns(3)
+    col1.write(' ')
+    col2.image(header_image)
+    col2.write(' ')
     st.image(header_image, width = 224)
     st.subheader("Welcome to Emotion Detective! An emotion detection website")
     initial_sentence = "People display emotions multiple times when going through different events in life. They display negative emotions whenever something upsets them (anger, sadness, fear). They can be very happy when an event goes in their favour (happiness). They can be quite shocked at seeing the unexpected (surprised). And finally, they can display a neutral outlook when everything seems calm (neutral)."
