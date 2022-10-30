@@ -1,3 +1,5 @@
 fastai==2.7.9
 seaborn==0.12.1
 fastbook==0.0.29
+torch==1.7.1
+torchvision==0.8.2
