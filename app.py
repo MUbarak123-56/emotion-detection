@@ -32,7 +32,8 @@ def run():
     st.write(objective_sentence)
    
     st.sidebar.image(header_image, use_column_width = True)
-    st.write("Use the button below to upload an image of someone's face so we can detect its emotion. Possible emotional states are: angry, sad, happy, fearful, surprised and sad.")
+    st.write("Use the button below to upload an image of someone's face so we can detect its emotion. Possible emotional states are: angry, happy, fearful, neutral, sad and surprised.")
+    st.sidebar.markdown("<h1 style='text-align: center; color: red; font-size: 8'>Note: If taking a selfie, you might have to take it vertically</h1>", unsafe_allow_html=True)
     image_upload = st.file_uploader("Upload an image", type = ["png","jpg"])
     
     if image_upload is not None:
