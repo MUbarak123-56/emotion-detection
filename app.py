@@ -6,8 +6,8 @@ import io
 import numpy as np
 #import skimage
 from pathlib import Path
-#from fastai.vision.widgets import *
-from fastai.vision.widget import *
+from fastai.vision.widgets import *
+#from fastai.vision.widget import *
 from fastai.vision.all import *
 import pathlib
 import matplotlib.pyplot as plt
