@@ -15,22 +15,6 @@ import time
 from io import BytesIO
 import base64
 
-
-def add_bg_from_local(image_file):
-    with open(image_file, "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read())
-    st.markdown(
-    f"""
-    <style>
-    .stApp {{
-        background-image: url(data:image/{"png"};base64,{encoded_string.decode()});
-        background-size: cover
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-    )
-
 #temp = pathlib.PosixPath
 #pathlib.PosixPath = pathlib.WindowsPath
 model = load_learner("model-pkl/resnet-50.pkl")
@@ -38,7 +22,6 @@ model = load_learner("model-pkl/resnet-50.pkl")
 def run():
     st.set_page_config(layout='wide')
     header_image = Image.open("inside_out.png")
-    #add_bg_from_local('inside_out_display.png')
     #st.sidebar.header("Emotion Detective")
     st.sidebar.markdown("<h1 style='text-align: center; color: white;'>Emotion Detective</h1>", unsafe_allow_html=True)
     st.subheader("Welcome to Emotion Detective! An emotion detection website")
@@ -58,9 +41,9 @@ def run():
         
         img = img.resize((48,48)).convert("L")
         img = PIL.Image.Image.to_bytes_format(img)
-       
-        pred = model.predict(img)
         
+        ## Inferencing image
+        pred = model.predict(img)
         
         my_bar = st.progress(0)
         st.write("Generating Results")
