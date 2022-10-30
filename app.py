@@ -4,7 +4,7 @@ import streamlit.components.v1 as components
 import PIL
 import io
 import numpy as np
-import skimage
+#import skimage
 from pathlib import Path
 from fastai.vision.widgets import *
 from fastai.vision.all import *
