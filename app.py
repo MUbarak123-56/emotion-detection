@@ -24,7 +24,7 @@ def run():
     st.set_page_config(layout='wide')
     header_image = Image.open("inside_out.png")
     #st.sidebar.header("Emotion Detective")
-    st.markdown("<h1 style='text-align: center; color: white;'><font size="+2">Emotion Detective</font size></h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: white;'>Emotion Detective</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
     col1.write(' ')
     col2.image(header_image)
@@ -35,7 +35,7 @@ def run():
     objective_sentence = "The goal of this website will be to denote how someone feels by leveraging the power of Computer Vision to recognize and detect their emotional state. Some use cases of this app are interviewing, customer support and healthcare. Interviewers can utilize the website's ability to recognize interviewees' emotions and understand what their interviewees are going through during an interview. This will assist them with dealing with other interviewees in the future. Healthcare providers can also use this website's functionalities to know what a patient was feeling during a medical treatment, so they provide care for prospective patients without subjecting them to too much pain. Customer support representatives can use this website's ability to gain knowledge about how their customers feel so they can understand how to have better conversations with other customers in the future that will satisfy their customers' demands"
     st.write(objective_sentence)
     st.write("Use the button below to upload an image of someone's face so we can detect its emotion. Possible emotional states are: angry, happy, fearful, neutral, sad and surprised.")
-    #st.markdown("<h1 style='text-align: center; color: red;>This is bigger text.</font>Note: If taking a selfie, you might have to take it vertically</h1>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; color: red;>This is bigger text.</font>Note: If taking a selfie, you might have to take it vertically</h4>", unsafe_allow_html=True)
     image_upload = st.file_uploader("Upload an image", type = ["png","jpg"])
     
     if image_upload is not None:
