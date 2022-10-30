@@ -1,1 +1,1 @@
-# Emotion Detection Project
+# Emotion Detective
