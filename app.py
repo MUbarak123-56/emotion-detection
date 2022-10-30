@@ -63,7 +63,7 @@ def run():
         ratio = width/height
         height = 224
         width = ratio*224
-        tab1.image(img_display.resize((width,height)))
+        tab1.image(img_display.resize((int(width),int(height))))
         
         image = Image.open("images/" + pred[0] + ".png")
         #image = image.resize((224,224))
