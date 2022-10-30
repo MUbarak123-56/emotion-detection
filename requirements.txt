@@ -1,1 +1,2 @@
 fastai==2.7.9
+seaborn==0.12.1
