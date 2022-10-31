@@ -1,3 +1,3 @@
-*.png
-*.pkl
+/models
+/test_images
 *.ipynb
