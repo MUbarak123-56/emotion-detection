@@ -1,16 +1,14 @@
 import streamlit as st
-import pickle
+#import pickle
 import streamlit.components.v1 as components
 import PIL
 import io
 import numpy as np
 #import skimage
 from pathlib import Path
-#from fastai.vision.widgets import *
-#from fastai.vision.widget import *
 from fastai.vision.all import *
 import pathlib
-import matplotlib.pyplot as plt
+import matplotlib as plt
 import seaborn as sns; sns.set(rc={'axes.facecolor':(0,0,0,0), 'figure.facecolor':(0,0,0,0)})
 import time
 from io import BytesIO
