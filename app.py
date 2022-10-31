@@ -5,14 +5,14 @@ import PIL
 import io
 import numpy as np
 #import skimage
-from pathlib import Path
+#from pathlib import Path
 from fastai.vision.all import *
-import pathlib
+#import pathlib
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set(rc={'axes.facecolor':(0,0,0,0), 'figure.facecolor':(0,0,0,0)})
 import time
 from io import BytesIO
-import base64
+#import base64
 
 #temp = pathlib.PosixPath
 #pathlib.PosixPath = pathlib.WindowsPath
