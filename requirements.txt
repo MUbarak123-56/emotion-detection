@@ -1,6 +1,6 @@
 fastai==2.7.9
 seaborn==0.12.1
-torch==1.7.1
+torch==1.13.0
 torchvision==0.8.2
 streamlit==1.14.0
 matplotlib==3.6.0
