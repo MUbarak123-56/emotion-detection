@@ -85,7 +85,7 @@ def run():
     st.write(objective_sentence)
     st.write("Use the button below to upload an image of someone's face (preferably a headshot) so we can detect its emotion. Possible emotional states are: angry, happy, fearful, neutral, sad and surprised.")
     st.markdown("<h7 style='text-align: center; color: red;'>Note 1: You are better off uploading an image from a computer, rather than a selfie from your phone. They tend to yield better results. What you can do is take some pictures and upload them to your computer so you can upload them.</h7>", unsafe_allow_html=True)
-    st.markdown("<h7 style='text-align: center; color: red;'>Note 2: If you are using a phone to take a selfie to upload for processing, you will have to set your phone horizontal (i.e. rotate your phone by 90 degrees to the left or 90 degrees to the right) while taking the picture for it to be properly processed for analysis</h7>", unsafe_allow_html=True)
+    st.markdown("<h7 style='text-align: center; color: red;'>Note 2: If you are using a phone to take a selfie to upload an image for analysis, you will have to set your phone horizontal (i.e. rotate your phone by 90 degrees to the left or 90 degrees to the right) while taking the picture for it to be properly processed for analysis</h7>", unsafe_allow_html=True)
     st.markdown("<h7 style='text-align: center; color: red;'>Note 3: The model might be terrible at detecting the toddler/children's faces, so it will yield an error upon uploading their images.</h7>", unsafe_allow_html=True)
     image_upload = st.file_uploader("Upload an image", type = ["png","jpg","jpeg"])
     
@@ -95,10 +95,8 @@ def run():
         check_img = face_detector(img_array)
         if check_img is False:
             st.error("There is an error with your image")
-            st.write("You can fix this by following one or all of the instructions below:")
-            st.write("Upload an image with a face looking inside the camera")
-            st.write("Upload an image with only one person's face")
-            st.write("Upload an image with a face that is very visible")
+            st.markdown("<h7 style='text-align: center; color: white;'>You can fix this by following one or all of the instructions below:</h7>", unsafe_allow_html=True)
+            st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face looking inside the camera. - Upload an image with only one person's face. - Upload an image with a face that is very visible</h9>", unsafe_allow_html=True)
         else: 
             img = PIL.Image.Image.to_bytes_format(check_img)
             st.balloons()
