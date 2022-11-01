@@ -21,6 +21,7 @@ face_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fro
 #eye_classifier = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_eye.xml')
 eye_classifier = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_eye_tree_eyeglasses.xml')
 mouth_classifier = cv2.CascadeClassifier('haarcascade_mcs_mouth.xml')
+nose_classifier = cv2.CascadeClassifier('haarcascade_mcs_nose.xml')
 
 def face_detector(img):
     gray = img
@@ -46,8 +47,9 @@ def face_detector(img):
     faces = face_classifier.detectMultiScale(gray)
     eyes = eye_classifier.detectMultiScale(gray)
     mouth = mouth_classifier.detectMultiScale(gray)
+    nose = nose_classifier.detectMultiScale(gray)
     
-    if (len(faces) != 1) & (len(eyes) < 1) & (len(mouth) < 1):
+    if (len(faces) != 1) & (len(eyes) < 1) & (len(mouth) < 1) & (len(nose) < 1):
         return False
     elif len(faces) == 1:
         x, y, w, h = faces[0]
@@ -60,6 +62,10 @@ def face_detector(img):
         new_img = new_img.resize((48,48)).convert("L")
         return new_img
     elif (len(mouth) > 0):
+        new_img = PIL.Image.fromarray(img)
+        new_img = new_img.resize((48,48)).convert("L")
+        return new_img
+    elif (len(nose) > 0):
         new_img = PIL.Image.fromarray(img)
         new_img = new_img.resize((48,48)).convert("L")
         return new_img
