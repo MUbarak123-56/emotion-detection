@@ -5,17 +5,17 @@ import streamlit.components.v1 as components
 import PIL
 import io
 import numpy as np
-from pathlib import Path
+#from pathlib import Path
 from fastai.vision.all import *
-import pathlib
+#import pathlib
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set(rc={'axes.facecolor':(0,0,0,0), 'figure.facecolor':(0,0,0,0)})
 import time
 from io import BytesIO
 import base64
 
-temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
+#temp = pathlib.PosixPath
+#pathlib.PosixPath = pathlib.WindowsPath
 model = load_learner("model-pkl/resnet-50.pkl")
 face_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 #eye_classifier = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_eye.xml')
