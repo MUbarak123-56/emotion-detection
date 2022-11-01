@@ -31,7 +31,7 @@ def face_detector(img):
     elif img.shape == 2:
         gray = img
         
-    if (gray.shape[0] < 224) | (gray.shape[1] < 224):
+    if (gray.shape[0] < 112) | (gray.shape[1] < 112):
         arr_img = PIL.Image.fromarray(gray)
         width, height = arr_img.size
         ratio = width/height
