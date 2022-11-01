@@ -41,7 +41,7 @@ def face_detector(img):
         arr_img = np.array(arr_img)
         if arr_img.shape == 3:
             gray = cv2.cvtColor(arr_img, cv2.COLOR_BGR2GRAY)
-        elif img.shape == 2:
+        elif arr_img.shape == 2:
             gray = arr_img
         
     faces = face_classifier.detectMultiScale(gray)
