@@ -35,7 +35,7 @@ def face_detector(img):
         arr_img = PIL.Image.fromarray(gray)
         width, height = arr_img.size
         ratio = width/height
-        new_height = 448
+        new_height = 224
         new_width = ratio*new_height
         arr_img = arr_img.resize((int(new_width),int(new_height)))
         arr_img = np.array(arr_img)
