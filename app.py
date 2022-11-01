@@ -1,27 +1,72 @@
+#import libraries
+import cv2
 import streamlit as st
-#import pickle
 import streamlit.components.v1 as components
 import PIL
 import io
 import numpy as np
-#import skimage
-#from pathlib import Path
+from pathlib import Path
 from fastai.vision.all import *
-#import pathlib
+import pathlib
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set(rc={'axes.facecolor':(0,0,0,0), 'figure.facecolor':(0,0,0,0)})
 import time
 from io import BytesIO
-#import base64
+import base64
 
-#temp = pathlib.PosixPath
-#pathlib.PosixPath = pathlib.WindowsPath
+temp = pathlib.PosixPath
+pathlib.PosixPath = pathlib.WindowsPath
 model = load_learner("model-pkl/resnet-50.pkl")
+face_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+#eye_classifier = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_eye.xml')
+eye_classifier = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_eye_tree_eyeglasses.xml')
+mouth_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_mcs_mouth.xml')
 
+def face_detector(img):
+    gray = img
+    # Convert Image to Grayscale
+    if img.shape == 3:
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    elif img.shape == 2:
+        gray = img
+        
+    if (gray.shape[0] < 224) | (gray.shape[1] < 224):
+        arr_img = PIL.Image.fromarray(gray)
+        width, height = arr_img.size
+        ratio = width/height
+        new_height = 224
+        new_width = ratio*new_height
+        arr_img = arr_img.resize((int(new_width),int(new_height)))
+        arr_img = np.array(arr_img)
+        if arr_img.shape == 3:
+            gray = cv2.cvtColor(arr_img, cv2.COLOR_BGR2GRAY)
+        elif img.shape == 2:
+            gray = arr_img
+        
+    faces = face_classifier.detectMultiScale(gray)
+    eyes = eye_classifier.detectMultiScale(gray)
+    mouth = mouth_classifier.detectMultiScale(gray)
+    
+    if (len(faces) != 1) & (len(eyes) < 1) & (len(mouth) < 1):
+        return False
+    elif len(faces) == 1:
+        x, y, w, h = faces[0]
+        cropped_img = cv2.rectangle(img[y:y+h, x:x+w], (0, 0), (0,0), (0, 0, 0), 2)
+        new_img = PIL.Image.fromarray(cropped_img)
+        new_img = new_img.resize((48,48)).convert("L")
+        return new_img
+    elif (len(eyes) > 0 & len(eyes) <= 2):
+        new_img = PIL.Image.fromarray(img)
+        new_img = new_img.resize((48,48)).convert("L")
+        return new_img
+    elif (len(mouth) > 0):
+        new_img = PIL.Image.fromarray(img)
+        new_img = new_img.resize((48,48)).convert("L")
+        return new_img
+    
 def run():
     st.set_page_config(layout='wide')
     header_image = Image.open("inside_out.png")
-    #st.sidebar.header("Emotion Detective")
     st.markdown("<h1 style='text-align: center; color: white;'>Emotion Detective</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
     col1.write(' ')
@@ -33,63 +78,71 @@ def run():
     objective_sentence = "The goal of this website will be to denote how someone feels by leveraging the power of Computer Vision to recognize and detect their emotional state. Some use cases of this app are interviewing, customer support and healthcare. Interviewers can utilize the website's ability to recognize interviewees' emotions and understand what their interviewees are going through during an interview. This will assist them with dealing with other interviewees in the future. Healthcare providers can also use this website's functionalities to know what a patient was feeling during a medical treatment, so they provide care for prospective patients without subjecting them to too much pain. Customer support representatives can use this website's ability to gain knowledge about how their customers feel so they can understand how to have better conversations with other customers in the future that will satisfy their customers' demands"
     st.write(objective_sentence)
     st.write("Use the button below to upload an image of someone's face (preferably a headshot) so we can detect its emotion. Possible emotional states are: angry, happy, fearful, neutral, sad and surprised.")
-    st.markdown("<h7 style='text-align: center; color: red;'>Note: If you want to obtain a more accurate result, load your image on a computer, crop out the face in the picture that you would like to upload. Then, upload this cropped out head shot via your computer to this webpage. This has been proven to work better than taking selfies through your phones</h7>", unsafe_allow_html=True)
-    st.markdown("<h7 style='text-align: center; color: red;'>Extra Note: If you are using a phone to take a selfie to upload for processing, you will have to set your phone horizontal (i.e. rotate your phone by 90 degrees to the left or 90 degrees to the right) while taking the picture for it to be properly processed for analysis</h7>", unsafe_allow_html=True)
+    st.markdown("<h7 style='text-align: center; color: red;'>Note: If you are using a phone to take a selfie to upload for processing, you will have to set your phone horizontal (i.e. rotate your phone by 90 degrees to the left or 90 degrees to the right) while taking the picture for it to be properly processed for analysis</h7>", unsafe_allow_html=True)
     image_upload = st.file_uploader("Upload an image", type = ["png","jpg","jpeg"])
     
     if image_upload is not None:
-        st.balloons()
-        img = Image.open(image_upload)
-        img_display = img
+        image_open = Image.open(image_upload)
+        img_array = np.array(image_open)
+        check_img = face_detector(img_array)
+        if check_img is False:
+            st.error("There is an error with your image")
+            st.write("You can fix this by following one or all of the instructions below:")
+            st.write("Upload an image with a face looking inside the camera")
+            st.write("Upload an image with only one person's face")
+            st.write("Upload an image with a face that is very visible")
+        else: 
+            img = PIL.Image.Image.to_bytes_format(check_img)
+            st.balloons()
+            img_display = Image.open(image_upload)
         
-        img = img.resize((48,48)).convert("L")
-        img = PIL.Image.Image.to_bytes_format(img)
-        
-        ## Inferencing image
-        pred = model.predict(img)
-        
-        my_bar = st.progress(0)
-        st.write("Generating Results")
-        for percent_complete in range(100):
-            time.sleep(0.05)
-            my_bar.progress(percent_complete + 1)
-        #st.write(pred)
-        pred_labels = ["angry","fearful","happy","neutral", "sad", "surprised"]
-        pred_values = pred[2].tolist()
-        for i in range(len(pred_values)):
-            pred_values[i] = round(pred_values[i],3)
+            ## Inferencing image
+            pred = model.predict(img)
+            my_bar = st.progress(0)
+            st.write("Generating Results")
+            for percent_complete in range(100):
+                time.sleep(0.05)
+                my_bar.progress(percent_complete + 1)
+            #st.write(pred)
+            pred_labels = ["angry","fearful","happy","neutral", "sad", "surprised"]
+            pred_values = pred[2].tolist()
+            for i in range(len(pred_values)):
+                pred_values[i] = round(pred_values[i],3)
             
-        tab1, tab2, tab3 = st.tabs(["Image","Emotion","Visualization"])
+            tab1, tab2, tab3, tab4 = st.tabs(["Image","Face","Emotion","Visualization"])
         
-        width, height = img_display.size
-        ratio = width/height
-        height = 224
-        width = ratio*224
-        tab1.image(img_display.resize((int(width),int(height))))
+            width, height = img_display.size
+            ratio = width/height
+            height = 224
+            width = ratio*224
+            tab1.image(img_display.resize((int(width),int(height))))
         
-        image = Image.open("images/" + pred[0] + ".png")
-        #image = image.resize((224,224))
-        tab2.write("This person's emotional state is: " + pred[0])
-        tab2.image(image)
+            c_width, c_height = check_img.size
+            c_ratio = c_width/c_height
+            c_height = 224
+            c_width = c_ratio*224
+            tab2.image(check_img.resize((int(c_width),int(c_height))))
         
-        df_plot = pd.DataFrame({"label":pred_labels,"value":pred_values})
-        df_plot = df_plot.sort_values("value", ascending = False)
+            image = Image.open("images/" + pred[0] + ".png")
+            #image = image.resize((224,224))
+            tab3.write("This person's emotional state is: " + pred[0])
+            tab3.image(image)
         
-        fig, ax = plt.subplots(figsize=(12,8))
-        sns.barplot(x="value", y="label", data=df_plot, color = "blue")
-        ax.set_title("Emotional Rankings",fontdict= {'fontsize': 20, 'fontweight':'bold'})
-        ax.set_xlabel("Probability")
-        ax.set_ylabel("Label")
-        ax.xaxis.label.set_color('white')       
-        ax.yaxis.label.set_color('white')
-        ax.title.set_color('white')
-        ax.tick_params(axis='x', colors='white')   
-        ax.tick_params(axis='y', colors='white')
-        tab3.pyplot(fig)
-        #buf = BytesIO()
-        #fig.savefig(buf, format="png")
-        #tab3.image(buf, width = 800, use_column_width = True)
-    
+            df_plot = pd.DataFrame({"label":pred_labels,"value":pred_values})
+            df_plot = df_plot.sort_values("value", ascending = False)
+        
+            fig, ax = plt.subplots(figsize=(12,8))
+            sns.barplot(x="value", y="label", data=df_plot, color = "blue")
+            ax.set_title("Emotional Rankings",fontdict= {'fontsize': 20, 'fontweight':'bold'})
+            ax.set_xlabel("Probability")
+            ax.set_ylabel("Label")
+            ax.xaxis.label.set_color('white')       
+            ax.yaxis.label.set_color('white')
+            ax.title.set_color('white')
+            ax.tick_params(axis='x', colors='white')   
+            ax.tick_params(axis='y', colors='white')
+            tab4.pyplot(fig)
+        
 if __name__ == '__main__':
     run()
 
