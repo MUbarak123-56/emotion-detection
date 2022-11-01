@@ -57,7 +57,7 @@ def face_detector(img):
         new_img = PIL.Image.fromarray(cropped_img)
         new_img = new_img.resize((48,48)).convert("L")
         return new_img
-    elif (len(eyes) > 1 & len(eyes) <= 2):
+    elif (len(eyes) > 0 & len(eyes) <= 2):
         new_img = PIL.Image.fromarray(img)
         new_img = new_img.resize((48,48)).convert("L")
         return new_img
@@ -96,7 +96,9 @@ def run():
         if check_img is False:
             st.error("There is an error with your image")
             st.markdown("<h7 style='text-align: center; color: white;'>You can fix this by following one or all of the instructions below:</h7>", unsafe_allow_html=True)
-            st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face looking inside the camera. - Upload an image with only one person's face. - Upload an image with a face that is very visible</h9>", unsafe_allow_html=True)
+            st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face looking inside the camera.</h9>", unsafe_allow_html=True)
+            st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with only one person's face.</h9>", unsafe_allow_html=True)
+            st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face that is very visible</h9>", unsafe_allow_html=True)
         else: 
             img = PIL.Image.Image.to_bytes_format(check_img)
             st.balloons()
