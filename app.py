@@ -57,7 +57,7 @@ def face_detector(img):
         new_img = PIL.Image.fromarray(cropped_img)
         new_img = new_img.resize((48,48)).convert("L")
         return new_img
-    elif (len(eyes) > 0 & len(eyes) <= 2):
+    elif (len(eyes) > 1 & len(eyes) <= 2):
         new_img = PIL.Image.fromarray(img)
         new_img = new_img.resize((48,48)).convert("L")
         return new_img
