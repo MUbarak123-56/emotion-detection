@@ -85,6 +85,7 @@ def run():
     st.write(objective_sentence)
     st.write("Use the button below to upload an image of someone's face (preferably a headshot) so we can detect its emotion. Possible emotional states are: angry, happy, fearful, neutral, sad and surprised.")
     st.markdown("<h7 style='text-align: center; color: red;'>Note: If you are using a phone to take a selfie to upload for processing, you will have to set your phone horizontal (i.e. rotate your phone by 90 degrees to the left or 90 degrees to the right) while taking the picture for it to be properly processed for analysis</h7>", unsafe_allow_html=True)
+    st.markdown("<h7 style='text-align: center; color: red;'>Extra Note: The model might be terrible at detecting the toddler/children's images</h7>", unsafe_allow_html=True)
     image_upload = st.file_uploader("Upload an image", type = ["png","jpg","jpeg"])
     
     if image_upload is not None:
