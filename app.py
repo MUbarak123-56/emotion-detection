@@ -31,11 +31,11 @@ def face_detector(img):
     elif img.shape == 2:
         gray = img
         
-    if (gray.shape[0] < 56) | (gray.shape[1] < 56):
+    if (gray.shape[0] < 112) | (gray.shape[1] < 112):
         arr_img = PIL.Image.fromarray(gray)
         width, height = arr_img.size
         ratio = width/height
-        new_height = 224
+        new_height = 448
         new_width = ratio*new_height
         arr_img = arr_img.resize((int(new_width),int(new_height)))
         arr_img = np.array(arr_img)
@@ -55,7 +55,7 @@ def face_detector(img):
         x, y, w, h = faces[0]
         cropped_img = cv2.rectangle(img[y:y+h, x:x+w], (0, 0), (0,0), (0, 0, 0), 2)
         new_img = PIL.Image.fromarray(cropped_img)
-        new_img = new_img.resize((224,224)).convert("L")
+        new_img = new_img.resize((48,48)).convert("L")
         return new_img
     elif (len(eyes) > 1 & len(eyes) <= 2):
         new_img = PIL.Image.fromarray(img)
