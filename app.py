@@ -55,7 +55,7 @@ def face_detector(img):
         x, y, w, h = faces[0]
         cropped_img = cv2.rectangle(img[y:y+h, x:x+w], (0, 0), (0,0), (0, 0, 0), 2)
         new_img = PIL.Image.fromarray(cropped_img)
-        new_img = new_img.resize((48,48)).convert("L")
+        new_img = new_img.resize((224,224)).convert("L")
         return new_img
     elif (len(eyes) > 1 & len(eyes) <= 2):
         new_img = PIL.Image.fromarray(img)
