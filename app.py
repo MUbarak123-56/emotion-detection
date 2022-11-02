@@ -20,7 +20,7 @@ model = load_learner("model-pkl/resnet-50.pkl")
 face_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 #eye_classifier = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_eye.xml')
 eye_classifier = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_eye_tree_eyeglasses.xml')
-mouth_classifier = cv2.CascadeClassifier('haarcascade_mcs_mouth.xml')
+mouth_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_smile.xml')
 nose_classifier = cv2.CascadeClassifier('haarcascade_mcs_nose.xml')
 
 def face_detector(img):
