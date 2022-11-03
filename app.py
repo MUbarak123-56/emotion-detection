@@ -66,7 +66,7 @@ def face_detector(img):
         c_ratio = c_width/c_height
         c_height = 48
         c_width = c_ratio*48
-        new_img = new_img.resize((int(c_width),int(c_height)).convert("L")
+        new_img = new_img.resize((int(c_width),int(c_height))).convert("L")
         return new_img
     
 def run():
