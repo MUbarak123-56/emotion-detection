@@ -39,19 +39,8 @@ def face_detector(img):
     if (len(faces) != 1):
         return False
     elif len(faces) == 1:
-        #x1, y1, width, height = faces[0]['box']
-        #x2, y2 = x1 + width, y1 + height
-        #cropped_face = img[y1:y2, x1:x2]
-        #new_img = PIL.Image.fromarray(cropped_face)
-        #new_img = new_img.resize((48,48)).convert("L")
-        #return new_img
-        #    gray = img
-        # Convert Image to Grayscale
-            #if img.shape == 3:
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            #elif img.shape == 2:
-            #    gray = img
-        
+      
         if (gray.shape[0] < 112) | (gray.shape[1] < 112):
             arr_img = PIL.Image.fromarray(gray)
             width, height = arr_img.size
@@ -82,11 +71,11 @@ def face_detector(img):
             new_img = PIL.Image.fromarray(img)
             new_img = new_img.resize((48,48)).convert("L")
             return new_img
-        elif (len(mouth) > 0):
+        elif len(mouth) > 0:
             new_img = PIL.Image.fromarray(img)
             new_img = new_img.resize((48,48)).convert("L")
             return new_img
-        elif (len(nose) > 0):
+        elif len(nose) > 0:
             new_img = PIL.Image.fromarray(img)
             new_img = new_img.resize((48,48)).convert("L")
             return new_img
