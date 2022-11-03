@@ -40,7 +40,7 @@ def face_detector(img):
         new_img = PIL.Image.fromarray(img)
         #new_img = new_img.resize((48,48)).convert("L")
         return new_img
-        
+      
     elif img.shape == 3:
         faces = detector.detect_faces(img)
     
@@ -53,7 +53,7 @@ def face_detector(img):
         #new_img = PIL.Image.fromarray(cropped_face)
         #new_img = new_img.resize((48,48)).convert("L")
         #return new_img
-            gray = img
+        #    gray = img
         # Convert Image to Grayscale
             #if img.shape == 3:
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
