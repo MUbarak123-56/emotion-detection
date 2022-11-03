@@ -30,7 +30,7 @@ detector = MTCNN()
 
 def face_detector(img):
     
-    if (img.shape == 2):
+    if (img.shape[0] == 48) & (img.shape[1] == 48):
         #img = PIL.Image.fromarray(img)
         img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
         
