@@ -1,5 +1,6 @@
 #import libraries
 import cv2
+from mtcnn.mtcnn import MTCNN
 import streamlit as st
 import streamlit.components.v1 as components
 import PIL
@@ -22,6 +23,8 @@ face_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fro
 eye_classifier = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_eye_tree_eyeglasses.xml')
 mouth_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_smile.xml')
 nose_classifier = cv2.CascadeClassifier('haarcascade_mcs_nose.xml')
+
+detector = M
 
 def face_detector(img):
     gray = img
