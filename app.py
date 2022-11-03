@@ -32,7 +32,9 @@ def face_detector(img):
         gray = img
         
     if (gray.shape[0] == 48) & (gray.shape[1] == 48):
-        return img
+        new_img = PIL.Image.fromarray(gray)
+        new_img = new_img.resize((48,48)).convert("L")
+        return new_img
         
     #if (gray.shape[0] < 112) | (gray.shape[1] < 112):
     #    arr_img = PIL.Image.fromarray(gray)
