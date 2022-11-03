@@ -36,18 +36,18 @@ def face_detector(img):
         new_img = new_img.resize((48,48)).convert("L")
         return new_img
         
-    #if (gray.shape[0] < 112) | (gray.shape[1] < 112):
-    #    arr_img = PIL.Image.fromarray(gray)
-    #    width, height = arr_img.size
-    #    ratio = width/height
-    #    new_height = 224
-    #    new_width = ratio*new_height
-    #    arr_img = arr_img.resize((int(new_width),int(new_height)))
-    #    arr_img = np.array(arr_img)
-    #    if arr_img.shape == 3:
-    #        gray = cv2.cvtColor(arr_img, cv2.COLOR_BGR2GRAY)
-    #    elif arr_img.shape == 2:
-    #        gray = arr_img
+    if (gray.shape[0] < 112) | (gray.shape[1] < 112):
+        arr_img = PIL.Image.fromarray(gray)
+        width, height = arr_img.size
+        ratio = width/height
+        new_height = 224
+        new_width = ratio*new_height
+        arr_img = arr_img.resize((int(new_width),int(new_height)))
+        arr_img = np.array(arr_img)
+        if arr_img.shape == 3:
+            gray = cv2.cvtColor(arr_img, cv2.COLOR_BGR2GRAY)
+        elif arr_img.shape == 2:
+            gray = arr_img
         
     faces = face_classifier.detectMultiScale(gray)
     eyes = eye_classifier.detectMultiScale(gray)
