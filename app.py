@@ -41,7 +41,7 @@ def face_detector(img):
         #new_img = new_img.resize((48,48)).convert("L")
         return new_img
       
-    elif img.shape == 3:
+    elif img.shape != 2:
         faces = detector.detect_faces(img)
     
         if (len(faces) != 1):
