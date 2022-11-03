@@ -49,7 +49,7 @@ def face_detector(img):
         elif arr_img.shape == 2:
             gray = arr_img
         
-    faces = face_classifier.detectMultiScale(gray)
+    faces = face_classifier.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=7, minSize=(30, 30))
     eyes = eye_classifier.detectMultiScale(gray)
     mouth = mouth_classifier.detectMultiScale(gray)
     nose = nose_classifier.detectMultiScale(gray)
