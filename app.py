@@ -31,18 +31,21 @@ def face_detector(img):
     elif img.shape == 2:
         gray = img
         
-    if (gray.shape[0] < 112) | (gray.shape[1] < 112):
-        arr_img = PIL.Image.fromarray(gray)
-        width, height = arr_img.size
-        ratio = width/height
-        new_height = 224
-        new_width = ratio*new_height
-        arr_img = arr_img.resize((int(new_width),int(new_height)))
-        arr_img = np.array(arr_img)
-        if arr_img.shape == 3:
-            gray = cv2.cvtColor(arr_img, cv2.COLOR_BGR2GRAY)
-        elif arr_img.shape == 2:
-            gray = arr_img
+    if (gray.shape[0] == 48) & (gray.shape[1] == 48):
+        return img
+        
+    #if (gray.shape[0] < 112) | (gray.shape[1] < 112):
+    #    arr_img = PIL.Image.fromarray(gray)
+    #    width, height = arr_img.size
+    #    ratio = width/height
+    #    new_height = 224
+    #    new_width = ratio*new_height
+    #    arr_img = arr_img.resize((int(new_width),int(new_height)))
+    #    arr_img = np.array(arr_img)
+    #    if arr_img.shape == 3:
+    #        gray = cv2.cvtColor(arr_img, cv2.COLOR_BGR2GRAY)
+    #    elif arr_img.shape == 2:
+    #        gray = arr_img
         
     faces = face_classifier.detectMultiScale(gray)
     eyes = eye_classifier.detectMultiScale(gray)
@@ -84,7 +87,7 @@ def run():
     objective_sentence = "The goal of this website will be to denote how someone feels by leveraging the power of Computer Vision to recognize and detect their emotional state. Some use cases of this app are interviewing, customer support and healthcare. Interviewers can utilize the website's ability to recognize interviewees' emotions and understand what their interviewees are going through during an interview. This will assist them with dealing with other interviewees in the future. Healthcare providers can also use this website's functionalities to know what a patient was feeling during a medical treatment, so they provide care for prospective patients without subjecting them to too much pain. Customer support representatives can use this website's ability to gain knowledge about how their customers feel so they can understand how to have better conversations with other customers in the future that will satisfy their customers' demands"
     st.write(objective_sentence)
     st.write("Use the button below to upload an image of someone's face (preferably a headshot) so we can detect its emotion. Possible emotional states are: angry, happy, fearful, neutral, sad and surprised.")
-    st.markdown("<h7 style='text-align: center; color: red;'>Note 1: You are better off uploading an image from a computer, rather than a selfie from your phone. They tend to yield better results. What you can do is take some pictures and trasnfer them to your computer so you can upload them to this website.</h7>", unsafe_allow_html=True)
+    st.markdown("<h7 style='text-align: center; color: red;'>Note 1: Please, use your computer to upload an image. This is better than taking a selfie from your phone or using an image from your phone. This approach tend to yield better results. What you can do is take some pictures and transfer them to your computer so you can upload them to this website.</h7>", unsafe_allow_html=True)
     st.markdown("<h7 style='text-align: center; color: red;'>Note 2: If you are using a phone to take a selfie to upload an image for analysis, you will have to set your phone horizontal (i.e. rotate your phone by 90 degrees to the left or 90 degrees to the right) while taking the picture for it to be properly processed for analysis</h7>", unsafe_allow_html=True)
     st.markdown("<h7 style='text-align: center; color: red;'>Note 3: The model might be terrible at detecting the toddler/children's faces, so it will yield an error upon uploading their images.</h7>", unsafe_allow_html=True)
     image_upload = st.file_uploader("Upload an image", type = ["png","jpg","jpeg"])
