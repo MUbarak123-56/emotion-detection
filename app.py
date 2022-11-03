@@ -33,53 +33,55 @@ def face_detector(img):
     if (img.shape[0] == 48) & (img.shape[1] == 48):
         #img = PIL.Image.fromarray(img)
         img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
-        
-    faces = detector.detect_faces(img)
+        return img
     
-    if (len(faces) != 1):
-        return False
-    elif len(faces) == 1:
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-      
-        if (gray.shape[0] < 112) | (gray.shape[1] < 112):
-            arr_img = PIL.Image.fromarray(gray)
-            width, height = arr_img.size
-            ratio = width/height
-            new_height = 224
-            new_width = ratio*new_height
-            arr_img = arr_img.resize((int(new_width),int(new_height)))
-            arr_img = np.array(arr_img)
-            if arr_img.shape == 3:
-                gray = cv2.cvtColor(arr_img, cv2.COLOR_BGR2GRAY)
-            elif arr_img.shape == 2:
-                gray = arr_img
+    else:
         
-        faces = face_classifier.detectMultiScale(gray, scaleFactor=1.04, minNeighbors=10, minSize=(30, 30))
-        eyes = eye_classifier.detectMultiScale(gray)
-        mouth = mouth_classifier.detectMultiScale(gray)
-        nose = nose_classifier.detectMultiScale(gray)
-   
-        if (len(faces) != 1) & (len(eyes) < 1) & (len(mouth) < 1) & (len(nose) < 1):
+        faces = detector.detect_faces(img)
+    
+        if (len(faces) != 1):
             return False
         elif len(faces) == 1:
-            x, y, w, h = faces[0]
-            cropped_img = cv2.rectangle(img[y:y+h, x:x+w], (0, 0), (0,0), (0, 0, 0), 2)
-            new_img = PIL.Image.fromarray(cropped_img)
-            new_img = new_img.resize((48,48)).convert("L")
-            return new_img
-        elif len(eyes) > 0:
-            new_img = PIL.Image.fromarray(img)
-            new_img = new_img.resize((48,48)).convert("L")
-            return new_img
-        elif len(mouth) > 0:
-            new_img = PIL.Image.fromarray(img)
-            new_img = new_img.resize((48,48)).convert("L")
-            return new_img
-        elif len(nose) > 0:
-            new_img = PIL.Image.fromarray(img)
-            new_img = new_img.resize((48,48)).convert("L")
-            return new_img
-    
+            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+      
+            if (gray.shape[0] < 112) | (gray.shape[1] < 112):
+                arr_img = PIL.Image.fromarray(gray)
+                width, height = arr_img.size
+                ratio = width/height
+                new_height = 224
+                new_width = ratio*new_height
+                arr_img = arr_img.resize((int(new_width),int(new_height)))
+                arr_img = np.array(arr_img)
+                if arr_img.shape == 3:
+                    gray = cv2.cvtColor(arr_img, cv2.COLOR_BGR2GRAY)
+                elif arr_img.shape == 2:
+                    gray = arr_img
+        
+            faces = face_classifier.detectMultiScale(gray, scaleFactor=1.04, minNeighbors=10, minSize=(30, 30))
+            eyes = eye_classifier.detectMultiScale(gray)
+            mouth = mouth_classifier.detectMultiScale(gray)
+            nose = nose_classifier.detectMultiScale(gray)
+   
+            if (len(faces) != 1) & (len(eyes) < 1) & (len(mouth) < 1) & (len(nose) < 1):
+                return False
+            elif len(faces) == 1:
+                x, y, w, h = faces[0]
+                cropped_img = cv2.rectangle(img[y:y+h, x:x+w], (0, 0), (0,0), (0, 0, 0), 2)
+                new_img = PIL.Image.fromarray(cropped_img)
+                new_img = new_img.resize((48,48)).convert("L")
+                return new_img
+            elif len(eyes) > 0:
+                new_img = PIL.Image.fromarray(img)
+                new_img = new_img.resize((48,48)).convert("L")
+                return new_img
+            elif len(mouth) > 0:
+                new_img = PIL.Image.fromarray(img)
+                new_img = new_img.resize((48,48)).convert("L")
+                return new_img
+            elif len(nose) > 0:
+                new_img = PIL.Image.fromarray(img)
+                new_img = new_img.resize((48,48)).convert("L")
+                return new_img
 def run():
     st.set_page_config(layout='wide')
     header_image = Image.open("inside_out.png")
