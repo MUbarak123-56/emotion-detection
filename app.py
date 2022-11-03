@@ -127,7 +127,7 @@ def run():
     st.markdown("<h7 style='text-align: center; color: red;'>Note 1: Please, use your computer to upload an image. This is better than taking a selfie from your phone or using an image from your phone. This approach tend to yield better results. What you can do is take some pictures and transfer them to your computer so you can upload them to this website.</h7>", unsafe_allow_html=True)
     st.markdown("<h7 style='text-align: center; color: red;'>Note 2: If you are using a phone to take a selfie to upload an image for analysis, you will have to set your phone horizontal (i.e. rotate your phone by 90 degrees to the left or 90 degrees to the right) while taking the picture for it to be properly processed for analysis</h7>", unsafe_allow_html=True)
     st.markdown("<h7 style='text-align: center; color: red;'>Note 3: The model might be terrible at detecting the toddler/children's faces, so it will yield an error upon uploading their images.</h7>", unsafe_allow_html=True)
-    image_upload = st.file_uploader("Upload an image", type = ["png","jpg","jpeg"])
+    image_upload = st.file_uploader("Upload an image", type = ["png","jpg","jpeg","jfif"])
     
     if image_upload is not None:
         image_open = Image.open(image_upload)
