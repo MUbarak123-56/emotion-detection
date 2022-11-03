@@ -60,7 +60,7 @@ def face_detector(img):
     elif len(faces) == 1:
         x1, y1, width, height = faces[0]['box']
         x2, y2 = x1 + width, y1 + height
-        cropped_face = pixels[y1:y2, x1:x2]
+        cropped_face = img[y1:y2, x1:x2]
         new_img = PIL.Image.fromarray(cropped_face)
         new_img = new_img.resize((48,48)).convert("L")
         return new_img
