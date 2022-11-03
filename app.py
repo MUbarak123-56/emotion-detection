@@ -38,7 +38,7 @@ def face_detector(img):
         
     if (img.shape[0] == 48) & (img.shape[1] == 48) & (img.shape == 2):
         new_img = PIL.Image.fromarray(img)
-        new_img = new_img.resize((48,48)).convert("L")
+        #new_img = new_img.resize((48,48)).convert("L")
         return new_img
         
     elif img.shape == 3:
