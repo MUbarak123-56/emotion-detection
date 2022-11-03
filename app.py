@@ -62,7 +62,11 @@ def face_detector(img):
         x2, y2 = x1 + width, y1 + height
         cropped_face = img[y1:y2, x1:x2]
         new_img = PIL.Image.fromarray(cropped_face)
-        new_img = new_img.resize((48,48)).convert("L")
+        c_width, c_height = new_img.size
+        c_ratio = c_width/c_height
+        c_height = 48
+        c_width = c_ratio*48
+        new_img = new_img.resize((int(c_width),int(c_height)).convert("L")
         return new_img
     
 def run():
