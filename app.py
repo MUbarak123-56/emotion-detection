@@ -24,7 +24,7 @@ face_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fro
 #eye_classifier = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_eye.xml')
 eye_classifier = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_eye_tree_eyeglasses.xml')
 mouth_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_smile.xml')
-nose_classifier = cv2.CascadeClassifier('haarcascade_mcs_nose.xml')
+nose_classifier = cv2.CascadeClassifier('classifier/haarcascade_mcs_nose.xml')
 
 detector = MTCNN()
 
