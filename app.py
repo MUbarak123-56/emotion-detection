@@ -41,8 +41,8 @@ def face_detector(img):
         
         try: 
             faces = detector.detect_faces(img)
-        except ValueError as e:
-            st.write("Mistake")
+        except:
+            raise ValueError("Mistake")
     
         if (len(faces) != 1):
             return False
