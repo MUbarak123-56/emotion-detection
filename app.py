@@ -46,7 +46,7 @@ def face_detector(img):
             st.markdown("<h7 style='text-align: center; color: white;'>You can fix this by following one or all of the instructions below:</h7>", unsafe_allow_html=True)
             st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face looking inside the camera.</h9>", unsafe_allow_html=True)
             st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with only one person's face.</h9>", unsafe_allow_html=True)
-            st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face that is very visible</h9>", unsafe_allow_html=True)
+            st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image in which the person's face is visible</h9>", unsafe_allow_html=True)
             st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face that is not black-and-white or grey</h9>", unsafe_allow_html=True)
             st.stop()
     
@@ -123,7 +123,7 @@ def run():
             st.markdown("<h7 style='text-align: center; color: white;'>You can fix this by following one or all of the instructions below:</h7>", unsafe_allow_html=True)
             st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face looking inside the camera.</h9>", unsafe_allow_html=True)
             st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with only one person's face.</h9>", unsafe_allow_html=True)
-            st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face that is very visible</h9>", unsafe_allow_html=True)
+            st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image in which the person's face is visible</h9>", unsafe_allow_html=True)
             st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face that is not black-and-white or grey</h9>", unsafe_allow_html=True)
         else: 
             img = PIL.Image.Image.to_bytes_format(check_img)
