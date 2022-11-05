@@ -1,2 +1,2 @@
 # Emotion Detective
-![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://emotion-detective.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://emotion-detective.streamlit.app/)
