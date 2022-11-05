@@ -47,6 +47,7 @@ def face_detector(img):
             st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face looking inside the camera.</h9>", unsafe_allow_html=True)
             st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with only one person's face.</h9>", unsafe_allow_html=True)
             st.markdown("<h9 style='text-align: center; color: white;'>- Upload an image with a face that is very visible</h9>", unsafe_allow_html=True)
+            st.stop()
     
         if (len(faces) != 1):
             return False
