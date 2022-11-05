@@ -39,7 +39,10 @@ def face_detector(img):
     
     else:
         
-        faces = detector.detect_faces(img)
+        try: 
+            faces = detector.detect_faces(img)
+        except ValueError as e:
+            st.write("Mistake")
     
         if (len(faces) != 1):
             return False
