@@ -15,8 +15,6 @@
 
 # Modeling
 
-# Potential Use Cases
-
 # Resources
 - FastAI
 - Streamlit
@@ -25,6 +23,8 @@
 - MTCNN
 - OpenCV
 - Seaborn
+- NumPy
+- Matplotlib
 # Contributors
 - Mubarak Ganiyu (mubarak.a.ganiyu@vanderbilt.edu)
 - Tinglei Wu
