@@ -18,7 +18,13 @@
 # Potential Use Cases
 
 # Resources
-
+- FastAI
+- Streamlit
+- Google Colab
+- PyTorch
+- MTCNN
+- OpenCV
+- Seaborn
 # Contributors
 - Mubarak Ganiyu (mubarak.a.ganiyu@vanderbilt.edu)
 - Tinglei Wu
