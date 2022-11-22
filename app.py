@@ -104,7 +104,7 @@ def run():
     st.markdown("<h2 style='text-align: center; color: white;'>Welcome to Emotion Detective! An emotion detection website</h2>", unsafe_allow_html=True)
     initial_sentence = "People display emotions multiple times when going through different events in life. They display negative emotions whenever something upsets them (anger, sadness, fear). They can be very happy when an event goes in their favour (happiness). They can be quite shocked at seeing the unexpected (surprised). And finally, they can display a neutral outlook when everything seems calm (neutral)."
     st.write(initial_sentence)
-    objective_sentence = "The goal of this website will be to denote how someone feels by leveraging the power of Computer Vision to recognize and detect a person's emotional state in a picture."
+    objective_sentence = "The goal of this website will be to denote how someone feels by leveraging the power of computer vision to recognize and detect a person's emotional state in a picture."
     st.write(objective_sentence)
     st.write("Use the button below to upload an image of someone's face (preferably a headshot) so we can detect its emotion. Possible emotional states are: angry, happy, fearful, neutral, sad and surprised.")
     
