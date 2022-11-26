@@ -15,6 +15,8 @@ This project is mainly focusing on utilizing the technology of deep learning mod
 
 # Data
 
+The data we have is downloaded from Kaggle (https://www.kaggle.com/datasets/ananthu017/emotion-detection-fer), which contains 35,685 emotion images in total and categorized them into 7 different categories (sad, neutral, happy, angry, disgusted, surprised, fearful). All the emotion images are saved in png format and each of them has a shape of 48x48 pixels in gray scale. However, we soon realized the data imbalance problem: all the other emotion categories have over 4,000 image data, while for the disgusted category, we only have about 500 images available. This can potentially cause problems later in the project. Therefore, we decided to remove the disgusted category from the data, which means we are only predicting other six emotions (sad, neutral, happy, angry, surprised, fearful) to avoid data imbalanced problem.
+
 # Modeling
 
 # Potential Use Cases 
