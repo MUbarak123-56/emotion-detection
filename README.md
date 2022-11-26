@@ -33,5 +33,5 @@ Although the app's functionality is based on static images. In the long run, we 
 - Matplotlib
 # Contributors
 - Mubarak Ganiyu (mubarak.a.ganiyu@vanderbilt.edu)
-- Tinglei Wu
+- Tinglei Wu (tinglei.wu@vanderbilt.edu)
 - Alvin Chen
