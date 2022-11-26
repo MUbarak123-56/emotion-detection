@@ -11,6 +11,8 @@
 
 # Project Overview
 
+This project is mainly focusing on utilizing the technology of deep learning models to help us detect different emotions of people in an image. Emotion detection is a way to understand people better in social settings in a way that it detects human feelings like happy, sad, surprised at a specific moment without actually asking them. It is useful in many areas like security, investigation and healthcare. After finished training the models, we are also planning to develop a emotion detection website, which will allow users to upload an image, and then we can generate the appropriate emotion of the person in the image.
+
 # Data
 
 # Modeling
