@@ -44,4 +44,4 @@ Although the app's functionality is based on static images. In the long run, we 
 # Contributors
 - Mubarak Ganiyu (mubarak.a.ganiyu@vanderbilt.edu)
 - Tinglei Wu (tinglei.wu@vanderbilt.edu)
-- Alvin Chen
+- Alvin Chen (yiwen.chen@vanderbilt.edu)
