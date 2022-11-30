@@ -23,9 +23,10 @@ The data was downloaded from Kaggle, and it contains 35,685 emotion images in to
 
 # Modeling
 ## Modeling Approaches
-AlexNet vs VGG vs ResNet
+AlexNet vs VGG vs ResNet (TODO)
 
 ## Model Training
+(TODO)
 
 # Potential Use Cases 
 
