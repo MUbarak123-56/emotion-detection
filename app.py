@@ -1,7 +1,7 @@
 #import libraries
 #import cv2
 import cv2
-from mtcnn.mtcnn import MTCNN
+from mtcnn import MTCNN
 from matplotlib import pyplot
 import streamlit as st
 import streamlit.components.v1 as components
