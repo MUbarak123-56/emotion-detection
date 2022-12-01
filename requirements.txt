@@ -1,4 +1,4 @@
-opencv-python
+opencv-python-headless
 fastai==2.7.9
 seaborn==0.12.1
 torch==1.12.1
@@ -7,4 +7,3 @@ streamlit==1.14.0
 matplotlib==3.6.0
 numpy==1.23.1
 tensorflow==2.9.2
-mtcnn_opencv==1.0.2
