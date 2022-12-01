@@ -44,10 +44,10 @@ learn = cnn_learner(dls = path_of_images, model = models.resnet50, metrics = err
 
 > In our task, we firstly draw a learning rate plot to find a local minimum as our best learning rate. Then, we tested `epochs = 4, 8, 12, 16` respectively to make our learning cost more stable and subtle. As the training results showing us, we finally chose `epochs = 8, learning rate = 4.78e-03` to save our checking points. At last, we called interpretation functions to compare what our models learned (loss, probablilty, and performance matrix)
 ```bash
-#Learning Rate:
+# Learning Rate:
 learn.lr_find()
 
-#Fine Tune:
+# Fine Tune:
 learn.fine_tune(epochs = 8, learning = 4.78e-03)
 
 # Interpreter:
