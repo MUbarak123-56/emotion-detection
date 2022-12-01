@@ -1,4 +1,4 @@
-opencv-python==4.2.0.32
+opencv-python
 fastai==2.7.9
 seaborn==0.12.1
 torch==1.12.1
