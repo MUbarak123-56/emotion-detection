@@ -1,6 +1,5 @@
 #import libraries
 import cv2
-from mtcnn.mtcnn import MTCNN
 from matplotlib import pyplot
 import streamlit as st
 import streamlit.components.v1 as components
@@ -14,6 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns; sns.set(rc={'axes.facecolor':(0,0,0,0), 'figure.facecolor':(0,0,0,0)})
 import time
 from io import BytesIO
+from mtcnn.mtcnn import MTCNN
 import base64
 
 #temp = pathlib.PosixPath
