@@ -1,5 +1,4 @@
 #import libraries
-#import cv2
 import cv2
 from mtcnn.mtcnn import MTCNN
 from matplotlib import pyplot
