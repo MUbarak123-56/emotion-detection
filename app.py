@@ -93,6 +93,7 @@ def face_detector(img):
                 new_img = new_img.resize((48,48)).convert("L")
                 return new_img
 def run():
+    st.set_page_config(layout='wide')
     def add_bg(image_file):
         with open(image_file, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read())
@@ -108,8 +109,7 @@ def run():
          unsafe_allow_html=True
          )
     
-    add_bg("./images/pattern.png") 
-    st.set_page_config(layout='wide')
+    add_bg("/images/pattern.png") 
     header_image = Image.open("images/inside_out.png")
     st.markdown("<h1 style='text-align: center; color: white;'>Emotion Detective</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
