@@ -100,7 +100,7 @@ def run():
         st.markdown(
         '''
         <style>
-        body {{ 
+        .stApp {{ 
             background-image: url(data:image/png;base64,%s);
             background-size: cover
          }}
