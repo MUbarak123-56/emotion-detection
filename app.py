@@ -109,7 +109,7 @@ def run():
          unsafe_allow_html=True
          )
     
-    add_bg("images/pattern.png") 
+    add_bg("images/new_pattern.jpg") 
     header_image = Image.open("images/inside_out.png")
     st.markdown("<h1 style='text-align: center; color: white;'>Emotion Detective</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
