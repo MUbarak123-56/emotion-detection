@@ -95,6 +95,21 @@ def face_detector(img):
 def run():
     st.set_page_config(layout='wide')
     header_image = Image.open("images/inside_out.png")
+    def add_bg_from_url():
+        st.markdown(f"""
+        <style>
+         .stApp {{
+             background-image: url("images/pattern.jfif");
+             background-attachment: fixed;
+             background-size: cover;
+             opacity: 0.75;
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
+
+    add_bg_from_url() 
     st.markdown("<h1 style='text-align: center; color: white;'>Emotion Detective</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
     col1.write(' ')
