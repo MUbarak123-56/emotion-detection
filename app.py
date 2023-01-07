@@ -99,18 +99,18 @@ def run():
         with open(image_file, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read())
         st.markdown(
-            f"""
-            <style>
-            .stApp {{
-                background-image: url(data:image/{"png"};base64,{encoded_string.decode()});
-                background-size: cover
-                }}
-            </style>
-            """,
-            unsafe_allow_html=True
-            )
+        f"""
+        <style>
+        .stApp {{ 
+            background-image: url(data:images/{"png"};base64,{encoded_string.decode()});
+            background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+         )
     
-    add_bg_from_url("images/pattern.jfif") 
+    add_bg_from_url("images/pattern.jpg") 
     st.markdown("<h1 style='text-align: center; color: white;'>Emotion Detective</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
     col1.write(' ')
