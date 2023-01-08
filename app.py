@@ -104,8 +104,10 @@ def run():
         <style>
         .stApp {{
             background-image: url(data:image/{"png"};base64,{encoded_string.decode()});
-            background-size: cover;
-         }}
+            background-size: cover;}}
+        .tab {{
+            background-color: "#ffffff";
+        }}
          </style>
          """,
          unsafe_allow_html=True
