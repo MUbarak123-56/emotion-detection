@@ -103,8 +103,6 @@ def run():
         .stApp {{
             background-image: url(data:image/{"png"};base64,{encoded_string.decode()});
             background-size: cover;
-            background-color:"#FFFFFF";
-            opacity: 0.7
          }}
          </style>
          """,
