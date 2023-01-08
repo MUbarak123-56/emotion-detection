@@ -27,6 +27,8 @@ nose_classifier = cv2.CascadeClassifier('classifier/haarcascade_mcs_nose.xml')
 
 detector = MTCNN()
 
+GITHUB_OWNER = "MUbarak123-56"
+
 def face_detector(img):
     
     if (img.shape[0] == 48) & (img.shape[1] == 48):
